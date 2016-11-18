@@ -1,16 +1,6 @@
-<?php
-  include "db.php";
+<?php include "db.php"; ?>
+<?php include "functions.php"; ?>
 
-    $query = "SELECT * FROM users";
-
-    //variable to test if it worked...mysqli_query performs query on the database
-    $result = mysqli_query($connection, $query);
-
-    //if mysql returns false, it will kill everything and return the error
-    if(!$result) {
-      die('Query FAILED' . mysqli_error());
-    }
-?>
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +12,7 @@
   <body>
     <div class="container">
       <div class="col-xs-6">
-        <form action="login_create.php" method="post">
+        <form action="login_update.php" method="post">
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control">
@@ -35,7 +25,9 @@
 
           <div class="form-group">
             <select name="id" id="">
-              <option value="">1</option>
+              <?php
+                showAllData();
+              ?>
             </select>
           </div>
 
