@@ -1,8 +1,8 @@
-<?php
+<?php include "db.php";
+
   if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
 
       if ($connection) {
         echo "We are connected";
@@ -37,6 +37,7 @@
   <body>
     <div class="container">
       <div class="col-xs-6">
+        <h1 class="text-center">Create User</h1>
         <form action="login_create.php" method="post">
           <div class="form-group">
             <label for="username">Username</label>
