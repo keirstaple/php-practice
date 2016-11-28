@@ -1,31 +1,6 @@
-<?php include "db.php";
-
-  if(isset($_POST['submit'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-      if ($connection) {
-        echo "We are connected";
-      } else {
-        die("Database connection failed");
-      }
-
-      //this is SQL language that we're sending to the database
-      $query = "INSERT INTO users(username,password)";
-
-      //concatenates to line above
-      $query .= "VALUES ('$username', '$password')";
-
-      //variable to test if it worked...mysqli_query performs query on the database
-      $result = mysqli_query($connection, $query);
-
-      //if mysql returns false, it will kill everything and return the error
-      if(!$result) {
-        die('Query FAILED' . mysqli_error());
-      }
-
-  }
-?>
+<?php include "db.php"; ?>
+<?php include "functions.php"; ?>
+<?php createRows(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -49,7 +24,7 @@
             <input type="password" name="password" class="form-control">
           </div>
 
-          <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+          <input type="submit" name="submit" value="Create" class="btn btn-primary">
         </form>
       </div>
     </div>
