@@ -5,7 +5,7 @@
     //make sure connection is global
     global $connection;
 
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users ";
 
     //variable to test if it worked...mysqli_query performs query on the database
     $result = mysqli_query($connection, $query);
@@ -67,7 +67,7 @@
   function createRows() {
     if(isset($_POST['submit'])){
       global $connection;
-      
+
       $username = $_POST['username'];
       $password = $_POST['password'];
 
@@ -92,6 +92,25 @@
       } else {
         echo "Record Created";
       }
+    }
+  }
+
+  function readRows() {
+    //don't need isset() because we aren't posting anything from a form
+    global $connection;
+
+    $query = "SELECT * FROM users ";
+
+    //variable to test if it worked...mysqli_query performs query on the database
+    $result = mysqli_query($connection, $query);
+
+    //if mysql returns false, it will kill everything and return the error
+    if(!$result) {
+      die('Query FAILED' . mysqli_error());
+    }
+
+    while ($row = mysqli_fetch_assoc($result)) {
+      print_r($row);
     }
   }
 ?>
